@@ -7,7 +7,7 @@ This code organizes the **datacenters list** in a separate file (`datacenters.py
 
 ## Features
 
-- **Modular**: The large datacenters list is isolated in `datacenters.py`.
+- **Modular**: The large datacenters list is isolated in `datacenters_list.py`.
 - **Random Bot Avatar**: The bot can randomly pick its avatar from `AVATAR_URLS`, or you can provide a custom URL for each command.
 - **Datacenter HIT**: After sending a DM, the bot checks each datacenter to see which responded with "HIT".
 - **Approximate Mapping**: The bot builds a URL to a Google Static Map, drawing:
