@@ -38,7 +38,8 @@ This code organizes the **datacenters list** in a separate file (`datacenters.py
 
 4. Clone the Repository
 
-
+   ```bash
+   https://github.com/norahc-x/ApproxGuesser.git
 
 5. Install dependencies:
    ```bash
