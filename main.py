@@ -243,7 +243,7 @@ async def locate_id(
         return
 
     # 3) Loop attempts
-    max_attempts = 5
+    max_attempts = 10
     attempt = 0
     hits = []
 
@@ -375,7 +375,7 @@ async def locate_name(
         return
 
     # 3) Attempt loop
-    max_attempts = 5
+    max_attempts = 10
     attempt = 0
     hits = []
 
