@@ -36,7 +36,11 @@ This code organizes the **datacenters list** in a separate file (`datacenters.py
     - MY_USER_ID = 123456789012345678 (your numeric Discord user ID, if you want to restrict usage).
     - GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"
 
-4. Install dependencies:
+4. Clone the Repository
+
+
+
+5. Install dependencies:
    ```bash
    pip install -r requirements.txt
 
