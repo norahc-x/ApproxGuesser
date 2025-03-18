@@ -70,8 +70,6 @@ Demo Scenario
 
 ## Notes
 
- Notes
-
   - This is primarily an educational or demonstration project, illustrating how caching might give hints about a user’s region.
   - Accuracy is not guaranteed—this does not truly locate the user, and it is more a concept demonstration.
   - The code draws circles of a fixed radius (e.g., 300 km, 150 km, 75 km). You can tweak the radius in the `build_static_map` function.
