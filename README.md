@@ -52,7 +52,7 @@ After the DM is sent, the bot waits a few seconds for push notification caching,
 
 ## Demo
 
-
+![demo](https://github.com/user-attachments/assets/2b5ac173-263b-44eb-b942-03c3380740a6)
 
 ## Notes
 
