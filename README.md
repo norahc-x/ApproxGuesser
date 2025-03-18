@@ -52,7 +52,16 @@ After the DM is sent, the bot waits a few seconds for push notification caching,
 
 ## Demo
 
-![demo](https://github.com/user-attachments/assets/2b5ac173-263b-44eb-b942-03c3380740a6)
+![demo1](https://github.com/user-attachments/assets/32322a1b-a80d-449e-9d6a-09dec69132b9)
+
+Demo Scenario
+
+  - The user executes `/locate_id <user_id>` (or `/locate_name <username>`) in a Discord channel.
+  - The bot randomly selects (or sets) its avatar, then attempts up to 10 times to send a DM to your target until at least one Cloudflare datacenter responds with “HIT.”
+  - After a brief pause (to allow push notifications), the bot checks which Cloudflare datacenter(s) responded with “HIT” for the bot’s avatar.
+  - The bot returns an embedded map and a summary message indicating the datacenter city (or multiple datacenters) where the avatar was cached. If there’s only one datacenter, it draws three circles on that single location; if multiple, it draws orange circles on each datacenter and calculates an approximate midpoint, drawing additional red and blue circles at that average location.
+  - Your target sees a direct message from the bot, and you see the resulting map and coordinates in the channel where you ran the command, showcasing the playful “triangulation” concept.
+
 
 ## Notes
 
@@ -60,5 +69,9 @@ After the DM is sent, the bot waits a few seconds for push notification caching,
 
   - This is primarily an educational or demonstration project, illustrating how caching might give hints about a user’s region.
   - Accuracy is not guaranteed—this does not truly locate the user, and it is more a concept demonstration.
-  - The code draws circles of a fixed radius (e.g., 300 km, 150 km, 75 km). You can tweak the radii in the `build_static_map` function.
+  - The code draws circles of a fixed radius (e.g., 300 km, 150 km, 75 km). You can tweak the radius in the `build_static_map` function.
   - For a real production scenario, always follow Discord’s Terms of Service and ensure you comply with privacy and data-gathering regulations.
+
+## Contributing
+
+Feel free to open issues or submit pull requests. This repository is open for improvements, additional features, or bug fixes.
