@@ -1,6 +1,9 @@
 # ApproxGuesser
 Discord bot that uses Cloudflare’s cache hits to estimate an approximate user location.
 
+ Discord bot that uses Cloudflare’s cache hits to estimate an approximate user location. 
+ It can randomize the bot’s avatar, send direct messages, and calculate an average location if multiple datacenters respond. 
+
 When the bot sends a direct message, its avatar URL may be cached by various Cloudflare datacenters. By checking each datacenter’s “cf-cache-status” header, the bot identifies which ones have stored (HIT) the avatar. This allows the bot to estimate a user’s approximate region by seeing where the content was cached and drawing circles on a map.
 
 This code organizes the **datacenters list** in a separate file (`datacenters.py`) for cleaner readability.
