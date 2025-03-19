@@ -2,7 +2,6 @@
 #
 # This file holds a sample list of Cloudflare datacenters
 # used by the main bot logic in bot.py.
-#
 
 datacenters = [
      {
@@ -119,7 +118,7 @@ datacenters = [
         "lat": 38.9072,
         "lon": -77.0369
     },
-    # Europa
+    # Europe
     {
         "url": "https://cdn-london.discordapp.com",
         "city": "London",
