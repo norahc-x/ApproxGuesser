@@ -1,3 +1,5 @@
+__AUTHOR__: str = "norahc-x inspired by hackermondev" 
+
 import io
 import math
 import random
