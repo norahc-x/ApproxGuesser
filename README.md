@@ -15,7 +15,7 @@ This code organizes the **datacenters list** in a separate file (`datacenters.py
 - **Approximate Mapping**: The bot builds a URL to a Google Static Map, drawing:
   - **Orange circles** around the datacenters that responded with a HIT.
   - **Red and Blue circles** on the average location (if multiple datacenters are found). If only one datacenter is found, all three circles (orange, red, blue) are drawn on that single datacenter.
-  - **Markers labeled "P" for each datacenter (and/or the average location, depending on how you customize it)..
+  - **Markers labeled "P"** for each datacenter (and/or the average location, depending on how you customize it)..
 - **Slash Commands**:
   - `/locate_id <user_id>`: DM user by numeric ID.
   - `/locate_name <username>`: DM user by name (cache-based).
