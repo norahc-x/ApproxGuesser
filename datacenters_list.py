@@ -1,5 +1,4 @@
-# datacenters.py
-#
+
 # This file holds a sample list of Cloudflare datacenters
 # used by the main bot logic in main.py
 
