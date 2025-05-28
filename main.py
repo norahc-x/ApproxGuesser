@@ -12,7 +12,6 @@ from discord import Option
 from datacenters_list import datacenters
 
 
-# ====================== BOT CONFIGURATION ======================
 
 TOKEN = "" 
 MY_USER_ID =   
@@ -26,7 +25,7 @@ intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(intents=intents)
 
-# ====================== SUPPORT FUNCTIONS ======================
+# SUPPORT FUNCTIONS 
 
 def check_cache_status(url: str) -> str:
     """
@@ -86,7 +85,7 @@ async def randomize_bot_avatar(ctx: discord.ApplicationContext = None):
     except Exception as e:
         print(f"❌ Error during avatar randomization: {e}")
 
-# ====================== MAP FUNCTIONS ======================
+#  MAP FUNCTIONS 
 
 def build_circle_path(lat_center, lon_center, radius_km=200, num_points=36):
     """
@@ -196,13 +195,13 @@ def build_static_map(
     query_string = "&".join(map_params)
     return base_url + query_string
 
-# ====================== EVENT: ON_READY ======================
+#  EVENT: ON_READY 
 
 @bot.event
 async def on_ready():
     print(f"Bot connected as {bot.user}")
 
-# ====================== COMMAND 1: locate_id ======================
+#  COMMAND 1: locate_id 
 
 @bot.slash_command(
     name="locate_id",
@@ -334,7 +333,7 @@ async def locate_id(
             f"(error {map_response.status_code})."
         )
 
-# ====================== COMMAND 2: locate_name ======================
+#  COMMAND 2: locate_name 
 
 @bot.slash_command(
     name="locate_name",
@@ -461,5 +460,5 @@ async def locate_name(
             f"(error {map_response.status_code})."
         )
         
-# ====================== BOT RUN ======================
+#  BOT RUN 
 bot.run(TOKEN)
