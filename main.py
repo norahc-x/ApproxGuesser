@@ -459,6 +459,5 @@ async def locate_name(
             "Some datacenters responded with HIT, but the map is not available "
             f"(error {map_response.status_code})."
         )
-        
-#  BOT RUN 
+         
 bot.run(TOKEN)
