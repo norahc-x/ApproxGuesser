@@ -63,10 +63,10 @@ async def set_bot_avatar(image_content: bytes, ctx: discord.ApplicationContext =
     try:
         await bot.user.edit(avatar=image_content)
         if ctx:
-            await ctx.followup.send("✅ Bot avatar updated successfully!", ephemeral=True)
+            await ctx.followup.send(" Bot avatar updated successfully!", ephemeral=True)
     except Exception as e:
         if ctx:
-            await ctx.followup.send(f"❌ Error setting the bot's avatar: {e}", ephemeral=True)
+            await ctx.followup.send(f" Error setting the bot's avatar: {e}", ephemeral=True)
         else:
             print(f"Error setting the bot's avatar: {e}")
 
@@ -81,9 +81,9 @@ async def randomize_bot_avatar(ctx: discord.ApplicationContext = None):
         if response.status_code == 200:
             await set_bot_avatar(response.content, ctx)
         else:
-            print("❌ Could not download the random avatar image.")
+            print(" Could not download the random avatar image.")
     except Exception as e:
-        print(f"❌ Error during avatar randomization: {e}")
+        print(f" Error during avatar randomization: {e}")
 
 #  MAP FUNCTIONS 
 
@@ -212,7 +212,7 @@ async def locate_id(
     avatar_url: Option(str, "Bot avatar URL (optional)", required=False, default=None) # type: ignore
 ):
     if ctx.author.id != MY_USER_ID:
-        await ctx.respond("❌ You do not have permission to use this command.", ephemeral=True)
+        await ctx.respond(" You do not have permission to use this command.", ephemeral=True)
         return
 
     await ctx.defer()
@@ -225,22 +225,22 @@ async def locate_id(
             if resp.status_code == 200:
                 await set_bot_avatar(resp.content, ctx)
             else:
-                await ctx.followup.send("❌ Could not download the custom avatar image.", ephemeral=True)
+                await ctx.followup.send(" Could not download the custom avatar image.", ephemeral=True)
         except Exception as e:
-            await ctx.followup.send(f"❌ Error setting the bot avatar: {e}", ephemeral=True)
+            await ctx.followup.send(f" Error setting the bot avatar: {e}", ephemeral=True)
 
     # 2) Fetch user
     try:
         uid = int(user_id)
         target_user = await bot.fetch_user(uid)
     except ValueError:
-        await ctx.followup.send("❌ The user ID must be an integer.")
+        await ctx.followup.send(" The user ID must be an integer.")
         return
     except discord.NotFound:
-        await ctx.followup.send("❌ User not found. Possibly an incorrect ID.")
+        await ctx.followup.send(" User not found. Possibly an incorrect ID.")
         return
     except discord.HTTPException as e:
-        await ctx.followup.send(f"❌ Error fetching the user: {e}")
+        await ctx.followup.send(f" Error fetching the user: {e}")
         return
 
     # 3) Loop attempts
@@ -251,21 +251,21 @@ async def locate_id(
     bot_id = bot.user.id
     bot_avatar_hash = bot.user.avatar
     if not bot_avatar_hash:
-        await ctx.followup.send("❌ The bot does not have an avatar set. Cannot complete triangulation.")
+        await ctx.followup.send(" The bot does not have an avatar set. Cannot complete triangulation.")
         return
 
     avatar_url_path = f"/avatars/{bot_id}/{bot_avatar_hash}"
 
     while attempt < max_attempts and not hits:
         try:
-            await target_user.send("Hello! This is a friend request. 😊")
+            await target_user.send("Hello! This is a friend request. ")
             await ctx.followup.send(
                 f"Attempt {attempt+1} to send DM to **{target_user.name}** (ID: {user_id}).\n"
                 "Waiting a few seconds for the push notification...",
                 ephemeral=True
             )
         except discord.HTTPException as e:
-            await ctx.followup.send(f"❌ Unable to send the friend request: {e}")
+            await ctx.followup.send(f" Unable to send the friend request: {e}")
             return
 
         await asyncio.sleep(6)
@@ -273,7 +273,7 @@ async def locate_id(
         attempt += 1
 
     if not hits:
-        await ctx.followup.send("❌ No datacenter returned HIT after several attempts. Unable to determine location.")
+        await ctx.followup.send(" No datacenter returned HIT after several attempts. Unable to determine location.")
         return
 
     # 4) Determine if multiple datacenters
@@ -344,7 +344,7 @@ async def locate_name(
     avatar_url: Option(str, "Bot avatar URL (optional)", required=False, default=None) # type: ignore
 ):
     if ctx.author.id != MY_USER_ID:
-        await ctx.respond("❌ You do not have permission to use this command.", ephemeral=True)
+        await ctx.respond(" You do not have permission to use this command.", ephemeral=True)
         return
 
     await ctx.defer()
@@ -357,9 +357,9 @@ async def locate_name(
             if resp.status_code == 200:
                 await set_bot_avatar(resp.content, ctx)
             else:
-                await ctx.followup.send("❌ Could not download the custom avatar image.", ephemeral=True)
+                await ctx.followup.send(" Could not download the custom avatar image.", ephemeral=True)
         except Exception as e:
-            await ctx.followup.send(f"❌ Error setting the bot avatar: {e}", ephemeral=True)
+            await ctx.followup.send(f" Error setting the bot avatar: {e}", ephemeral=True)
 
     # 2) Find user in bot.users
     target_user = None
@@ -370,7 +370,7 @@ async def locate_name(
 
     if not target_user:
         await ctx.followup.send(
-            f"❌ No user with username: **{username}** found.\n"
+            f" No user with username: **{username}** found.\n"
             "They must share at least one server with the bot."
         )
         return
@@ -383,21 +383,21 @@ async def locate_name(
     bot_id = bot.user.id
     bot_avatar_hash = bot.user.avatar
     if not bot_avatar_hash:
-        await ctx.followup.send("❌ The bot does not have an avatar set. Cannot complete triangulation.")
+        await ctx.followup.send(" The bot does not have an avatar set. Cannot complete triangulation.")
         return
 
     avatar_url_path = f"/avatars/{bot_id}/{bot_avatar_hash}"
 
     while attempt < max_attempts and not hits:
         try:
-            await target_user.send("Hello! This is a friend request. 😊")
+            await target_user.send("Hello! This is a friend request. ")
             await ctx.followup.send(
                 f"Attempt {attempt+1} to send DM to **{target_user.name}**.\n"
                 "Waiting a few seconds for the push notification...",
                 ephemeral=True
             )
         except discord.HTTPException as e:
-            await ctx.followup.send(f"❌ Unable to send the friend request: {e}")
+            await ctx.followup.send(f" Unable to send the friend request: {e}")
             return
 
         await asyncio.sleep(6)
@@ -405,7 +405,7 @@ async def locate_name(
         attempt += 1
 
     if not hits:
-        await ctx.followup.send("❌ No datacenter returned HIT after several attempts. Unable to determine location.")
+        await ctx.followup.send(" No datacenter returned HIT after several attempts. Unable to determine location.")
         return
 
     # 4) Single or multiple datacenters
